@@ -24,6 +24,9 @@ cp -r "$FOLDER"/* "$CLONE_DIR"
 
 cd "$CLONE_DIR"
 
-git add .
-git commit --message "Update from https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA)"
-git push origin master
+git checkout --orphan TEMP_BRANCH
+git add -A
+git commit -am "Build"
+git branch -D master
+git branch -m master
+git push -f origin master
